@@ -41,6 +41,7 @@ public class Consulta {
          consulta.setInt(1, codigo);
          ResultSet resultado = consulta.executeQuery();
          while(resultado.next()){
+             
             mewrua = new Mewrua(codigo, resultado.getInt("orden"), resultado.getString("nombre_mostrar"));
          }
       }catch(SQLException ex){

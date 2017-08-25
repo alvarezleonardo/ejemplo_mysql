@@ -27,7 +27,13 @@ public class ConectarMysql {
         Consulta unaConsulta = new Consulta();
         ArrayList<Mewrua> rubros = new ArrayList<>();
         rubros = unaConsulta.recuperarTodas(conn.getCnx());
-        System.out.println(rubros.get(2).getNombre_mostrar());
+        for(Integer i = 0;i<rubros.size();i++){
+            System.out.println(rubros.get(i).getNombre_mostrar());
+        }    
+        //System.out.println(rubros.get(3).getNombre_mostrar());
+        //System.out.println(rubros.size());
+        
+        
         
         conn.cerrar();
     }
