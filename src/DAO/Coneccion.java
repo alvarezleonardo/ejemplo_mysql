@@ -8,16 +8,22 @@ import java.sql.*;
 
 public class Coneccion {
    private Connection cnx = null;
+   private String host, usu, clave, bd;
 
+    public Coneccion(String host, String usu, String clave, String bd) {
+        this.host = host;
+        this.usu = usu;
+        this.clave = clave;
+        this.bd = bd;
+    }
     public Connection getCnx() {
         return cnx;
     }
-   
-   public void obtener() throws SQLException, ClassNotFoundException {
+   public void conectar() throws SQLException, ClassNotFoundException {
       if (cnx == null) {
          try {
             Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost/menu", "root", "");
+            cnx = DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bd, this.usu, this.clave);
          } catch (SQLException ex) {
             throw new SQLException(ex);
          } catch (ClassNotFoundException ex) {

@@ -20,12 +20,15 @@ public class ConectarMysql {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Coneccion conn = new Coneccion();
+        Coneccion conn = new Coneccion("localhost", "root", "", "menu");
+        conn.conectar();
+        
+        
         Consulta unaConsulta = new Consulta();
-        conn.obtener();
         ArrayList<Mewrua> rubros = new ArrayList<>();
         rubros = unaConsulta.recuperarTodas(conn.getCnx());
         System.out.println(rubros.get(2).getNombre_mostrar());
+        
         conn.cerrar();
     }
     
